@@ -1,0 +1,29 @@
+<div id='detection-report-header-hash'>
+	<%= @block.hash_digest %>
+</div>
+
+<div id='detection-report-header-content'>
+	<table width='100%'>
+
+		<tr>
+			<td>Size: <%= @block.Size %></td><td class="<%= @block.result_string.downcase %>">Status: <%= @block.result_string %></td>
+		</tr>
+
+		<tr>
+			<td>Data Type: <%= @block.data_type.Description %></td><td>Sub Blocks: <%= @block.blocks.size %>
+		</tr>
+
+		<tr>
+			<td>Sourcefire Flags: <%= @block.sf_flags_string %> </td>
+			<td>Enterprise Flags: <%= @block.ent_flags_string %> </td>
+		</tr>
+
+		<tr>
+			<td><%= link_to 'Download', :controller => 'blocks', :action => 'download', :id => @block.id %></td>
+			<td><%= link_to 'Delete', { :controller => 'blocks', :action => 'delete', :id => @block.id }, {:confirm => 'Are you sure you want to delete this block?'} %></td>
+		</tr>
+			
+	</table>
+</div>
+
+<div class='collapsible-container-footer'></div>

@@ -1,0 +1,28 @@
+Matt Olney's List
+=================
+IP Judgement -
+   Track Host information from alerts
+   Add a score field in hosts table (w/timestamp)
+   Add IP check to cache checking
+
+Nugget Registration -
+   Handle reregistration of a nugget with a new duple (remove previous entry)
+   Provide a deregistration process
+
+Nugget Management -
+   Thread out a keep-alive process to watch for dead nuggets and stale event ids
+
+Security -
+   Provide support for db-side encryption of data
+   Encrypt mysql sessions
+   Validate nugget registration
+   Restrict nugget registration
+
+Output Nuggets -
+   Move to in-memory list
+   Provide output registration capability
+
+Database -
+   Does component_blocks need a Block_ID  primary Key?  Shouldn't Main_Component be unique?
+   Make the decision about whether to use Archive engine for forensics tables
+   Add customizable max-connections

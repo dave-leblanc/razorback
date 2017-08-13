@@ -1,0 +1,2 @@
+module SystemStatusConfigurationHelper
+end

@@ -1,0 +1,17 @@
+<div id='detection-report'>
+	<div id='detection-report-header'>
+		<%= render 'report_header' %>
+	</div>
+
+	<div id='detection-report-body'>
+		<%= render 'report_body' %>
+	</div>
+</div>
+
+<%= render "update_tree" %>
+
+<script>
+    jQuery('#sidebar-report-tree-column').toggle();
+    jQuery('#main-content-column').attr('colspan', 1);
+</script>
+

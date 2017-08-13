@@ -1,0 +1,18 @@
+To setup ClamAV for Razorback
+
+For ubuntu:
+
+    Add the clamav PPA as documented here: https://help.ubuntu.com/community/ClamAV
+
+    Install clamav and libclamav-dev.
+
+
+
+- Run
+	sudo freshclam
+- Create this folder:
+	sudo mkdir /mnt/RZB_ClamAV
+- Change the privileges on the folder
+	chmod a+rw /mnt/RZB_ClamAV
+- Mount /mnt/RZB_ClamAV
+	sudo mount tmpfs /mnt/RZB_ClamAV -t tmpfs -o size=500m

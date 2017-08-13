@@ -1,0 +1,16 @@
+PROJECT_NAME     = Razorback API
+OUTPUT_DIRECTORY = doc
+WARNINGS         = YES
+INPUT            = include include/razorback tests doc/mainpage.txt
+FILE_PATTERNS    = *.c *.h
+PERL_PATH        = /usr/bin/perl
+SEARCHENGINE     = YES
+
+GENERATE_LATEX=NO
+OPTIMIZE_OUTPUT_FOR_C=YES
+HAVE_DOT=YES
+CALL_GRAPH=YES
+CALLER_GRAPH=YES
+JAVADOC_AUTOBRIEF=YES
+GENERATE_MAN=YES
+EXAMPLE_PATH=examples

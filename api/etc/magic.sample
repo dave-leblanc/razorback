@@ -1,0 +1,54 @@
+0   string	%PDF-   			PDF_FILE
+0	string	MZ					PE_FILE
+128	string	PE\000\000          PE_FILE
+0	string	PE\000\000          PE_FILE
+0	string	FWS					FLASH_FILE
+0	string	CWS					FLASH_FILE
+0   string	PK\003\004			ZIP_FILE
+0   string  ITSF\003\000\000\000\x60\000\000\000\001\000\000\000    WIN_HELP_FILE
+0	string  GIF8                GIF_FILE
+4	string  jP	                JPEG_FILE
+0	beshort 0xffd8              JPEG_FILE
+0	string  \x89PNG\x0d\x0a\x1a\x0a PNG_FILE
+0	string	\xd0\xcf\x11\xe0 	OLE_FILE
+0	string  \376\067\0\043      OLE_FILE
+512	string  \354\245\301        OLE_FILE
+0	string  \333\245-\0\0\0     OLE_FILE
+0	string  \<!DOCTYPE\ html    HTML_FILE
+0	string  \<head              HTML_FILE
+0	string  \<title             HTML_FILE
+0	string  \<html              HTML_FILE
+0	string  \<!--               HTML_FILE
+0	string  \<h1                HTML_FILE
+
+0	short		070707		CPIO_FILE
+0	short		0143561		CPIO_FILE
+0	string		070707		CPIO_FILE
+0	string		070701		CPIO_FILE
+0	string		070702		CPIO_FILE
+
+257	string		ustar\0		TAR_FILE
+257	string		ustar\040\040\0	TAR_FILE
+
+0	string		=<ar>		AR_FILE
+0	string		=!<arch>		AR_FILE
+0	string		\<ar>		AR_FILE
+
+0   string      \037\235 COMPRESSION_FILE
+0   ustring     \xFD7zXZ\x00 XZ_FILE
+
+0	string	PHILIPP PAR_FILE
+0	string	PAR PAR_FILE
+
+0	string		Rar!		RAR_FILE
+0   string      RE\x7e\x5e  RAR_FILE
+
+0       string          PAR\0	PAR_FILE
+0	string	PK00PK\003\004	ZIP_FILE
+0       string          \037\213        GZIP_FILE
+0	string		BZh			BZ2_FILE
+
+32769    string    CD001     ISO9660_FILE
+0       string          \177ELF         ELF_FILE
+
+28 string EICAR-STANDARD-ANTIVIRUS      PE_FILE

@@ -1,0 +1,15 @@
+Source: razorback-dispatcher
+Section: net
+Priority: extra
+Maintainer: Tom Judge <tjudge@sourcefire.com>
+Build-Depends: debhelper (>= 7.0.50~), autotools-dev, libmysqlclient-dev, librazorback-dev, cdbs
+Standards-Version: 3.9.1
+Homepage: http://razorbacktm.sourceforge.net/
+#Vcs-Git: git://git.debian.org/collab-maint/razorback-dispatcher.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/razorback-dispatcher.git;a=summary
+
+Package: razorback-dispatcher
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: <insert up to 60 chars description>
+ <insert long description, indented with spaces>

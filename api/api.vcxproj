@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6F2464CD-88E3-45C6-836C-330D180C5E38}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>api</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>ENABLE_ASSERT;ENABLE_UNIMPLEMENTED_ASSERT;WITH_SERVER;LIBSSH_STATIC;BUILDING_SO;WIN32;_DEBUG;_WINDOWS;_USRDLL;API_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\win32;$(SolutionDir)\include;$(SolutionDir)\src;$(SolutionDir)\libssh\include;C:\OpenSSL-Win32\include;C:\zlib-Win32\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\OpenSSL-Win32\lib;C:\zlib-Win32\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>LIBSSH_STATIC;BUILDING_SO;WIN32;_DEBUG;_WINDOWS;_USRDLL;API_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\win32;$(SolutionDir)\include;$(SolutionDir)\src;$(SolutionDir)\libssh\include;C:\OpenSSL-Win64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\OpenSSL-Win64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>BUILDING_SO;WIN32;NDEBUG;_WINDOWS;_USRDLL;API_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\win32;$(SolutionDir)\include;$(SolutionDir)\src;$(SolutionDir)\libssh\include;C:\OpenSSL-Win32\include;C:\zlib-Win32\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>C:\OpenSSL-Win32\lib;C:\zlib-Win32\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;API_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="libssh\src\agent.c" />
+    <ClCompile Include="libssh\src\auth.c" />
+    <ClCompile Include="libssh\src\auth1.c" />
+    <ClCompile Include="libssh\src\base64.c" />
+    <ClCompile Include="libssh\src\bind.c" />
+    <ClCompile Include="libssh\src\buffer.c" />
+    <ClCompile Include="libssh\src\callbacks.c" />
+    <ClCompile Include="libssh\src\channels.c" />
+    <ClCompile Include="libssh\src\channels1.c" />
+    <ClCompile Include="libssh\src\client.c" />
+    <ClCompile Include="libssh\src\config.c" />
+    <ClCompile Include="libssh\src\connect.c" />
+    <ClCompile Include="libssh\src\crc32.c" />
+    <ClCompile Include="libssh\src\dh.c" />
+    <ClCompile Include="libssh\src\ecdh.c" />
+    <ClCompile Include="libssh\src\error.c" />
+    <ClCompile Include="libssh\src\getpass.c" />
+    <ClCompile Include="libssh\src\gzip.c" />
+    <ClCompile Include="libssh\src\init.c" />
+    <ClCompile Include="libssh\src\kex.c" />
+    <ClCompile Include="libssh\src\kex1.c" />
+    <ClCompile Include="libssh\src\known_hosts.c" />
+    <ClCompile Include="libssh\src\legacy.c" />
+    <ClCompile Include="libssh\src\libcrypto.c" />
+    <ClCompile Include="libssh\src\log.c" />
+    <ClCompile Include="libssh\src\match.c" />
+    <ClCompile Include="libssh\src\messages.c" />
+    <ClCompile Include="libssh\src\misc.c" />
+    <ClCompile Include="libssh\src\options.c" />
+    <ClCompile Include="libssh\src\packet.c" />
+    <ClCompile Include="libssh\src\packet1.c" />
+    <ClCompile Include="libssh\src\packet_cb.c" />
+    <ClCompile Include="libssh\src\packet_crypt.c" />
+    <ClCompile Include="libssh\src\pcap.c" />
+    <ClCompile Include="libssh\src\pki.c" />
+    <ClCompile Include="libssh\src\pki_crypto.c" />
+    <ClCompile Include="libssh\src\poll.c" />
+    <ClCompile Include="libssh\src\scp.c" />
+    <ClCompile Include="libssh\src\server.c" />
+    <ClCompile Include="libssh\src\session.c" />
+    <ClCompile Include="libssh\src\sftp.c" />
+    <ClCompile Include="libssh\src\sftpserver.c" />
+    <ClCompile Include="libssh\src\socket.c" />
+    <ClCompile Include="libssh\src\string.c" />
+    <ClCompile Include="libssh\src\threads.c" />
+    <ClCompile Include="libssh\src\wrapper.c" />
+    <ClCompile Include="src\api.c" />
+    <ClCompile Include="src\binary_buffer.c" />
+    <ClCompile Include="src\block.c" />
+    <ClCompile Include="src\block_id.c" />
+    <ClCompile Include="src\block_pool.c" />
+    <ClCompile Include="src\command_and_control.c" />
+    <ClCompile Include="src\config_file.c" />
+    <ClCompile Include="src\connected_entity.c" />
+    <ClCompile Include="src\crypto.c" />
+    <ClCompile Include="src\daemon.c" />
+    <ClCompile Include="src\event.c" />
+    <ClCompile Include="src\fantasia.c" />
+    <ClCompile Include="src\hash.c" />
+    <ClCompile Include="src\init.c" />
+    <ClCompile Include="src\inspection.c" />
+    <ClCompile Include="src\inspector_queue.c" />
+    <ClCompile Include="src\json_buffer.c" />
+    <ClCompile Include="src\judgment.c" />
+    <ClCompile Include="src\list.c" />
+    <ClCompile Include="src\local_cache.c" />
+    <ClCompile Include="src\lock.c" />
+    <ClCompile Include="src\log.c" />
+    <ClCompile Include="src\messages\alert_child.c" />
+    <ClCompile Include="src\messages\alert_primary.c" />
+    <ClCompile Include="src\messages\block_submit.c" />
+    <ClCompile Include="src\messages\cache_req.c" />
+    <ClCompile Include="src\messages\cache_resp.c" />
+    <ClCompile Include="src\messages\cnc\bye.c" />
+    <ClCompile Include="src\messages\cnc\cache_clear.c" />
+    <ClCompile Include="src\messages\cnc\config_ack.c" />
+    <ClCompile Include="src\messages\cnc\config_update.c" />
+    <ClCompile Include="src\messages\cnc\error.c" />
+    <ClCompile Include="src\messages\cnc\go.c" />
+    <ClCompile Include="src\messages\cnc\hello.c" />
+    <ClCompile Include="src\messages\cnc\pause.c" />
+    <ClCompile Include="src\messages\cnc\paused.c" />
+    <ClCompile Include="src\messages\cnc\reg_req.c" />
+    <ClCompile Include="src\messages\cnc\reg_resp.c" />
+    <ClCompile Include="src\messages\cnc\rereg.c" />
+    <ClCompile Include="src\messages\cnc\running.c" />
+    <ClCompile Include="src\messages\cnc\term.c" />
+    <ClCompile Include="src\messages\core.c" />
+    <ClCompile Include="src\messages\inspection.c" />
+    <ClCompile Include="src\messages\judgment.c" />
+    <ClCompile Include="src\messages\log.c" />
+    <ClCompile Include="src\messages\output_event.c" />
+    <ClCompile Include="src\messages\output_log.c" />
+    <ClCompile Include="src\metadata.c" />
+    <ClCompile Include="src\ntvl.c" />
+    <ClCompile Include="src\nugget.c" />
+    <ClCompile Include="src\queue.c" />
+    <ClCompile Include="src\queue_list.c" />
+    <ClCompile Include="src\response_queue.c" />
+    <ClCompile Include="src\runtime_config.c" />
+    <ClCompile Include="src\socket.c" />
+    <ClCompile Include="src\string_list.c" />
+    <ClCompile Include="src\submission.c" />
+    <ClCompile Include="src\thread.c" />
+    <ClCompile Include="src\thread_pool.c" />
+    <ClCompile Include="src\timer.c" />
+    <ClCompile Include="src\transfer\core.c" />
+    <ClCompile Include="src\transfer\file.c" />
+    <ClCompile Include="src\transfer\ssh.c" />
+    <ClCompile Include="src\uuids.c" />
+    <ClCompile Include="win32\bobins.c" />
+    <ClCompile Include="win32\getopt.c" />
+    <ClCompile Include="win32\getopt_long.c" />
+    <ClCompile Include="win32\json\arraylist.c" />
+    <ClCompile Include="win32\json\debug.c" />
+    <ClCompile Include="win32\json\json_object.c" />
+    <ClCompile Include="win32\json\json_tokener.c" />
+    <ClCompile Include="win32\json\json_util.c" />
+    <ClCompile Include="win32\json\linkhash.c" />
+    <ClCompile Include="win32\json\printbuf.c" />
+    <ClCompile Include="win32\uuid\clear.c" />
+    <ClCompile Include="win32\uuid\compare.c" />
+    <ClCompile Include="win32\uuid\copy.c" />
+    <ClCompile Include="win32\uuid\isnull.c" />
+    <ClCompile Include="win32\uuid\pack.c" />
+    <ClCompile Include="win32\uuid\parse.c" />
+    <ClCompile Include="win32\uuid\unpack.c" />
+    <ClCompile Include="win32\uuid\unparse.c" />
+    <ClCompile Include="win32\uuid\uuid_time.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\razorback.h" />
+    <ClInclude Include="include\razorback\api.h" />
+    <ClInclude Include="include\razorback\block.h" />
+    <ClInclude Include="include\razorback\block_id.h" />
+    <ClInclude Include="include\razorback\block_pool.h" />
+    <ClInclude Include="include\razorback\cache.h" />
+    <ClInclude Include="include\razorback\config_file.h" />
+    <ClInclude Include="include\razorback\connected_entity.h" />
+    <ClInclude Include="include\razorback\daemon.h" />
+    <ClInclude Include="include\razorback\debug.h" />
+    <ClInclude Include="include\razorback\event.h" />
+    <ClInclude Include="include\razorback\hash.h" />
+    <ClInclude Include="include\razorback\inspector_queue.h" />
+    <ClInclude Include="include\razorback\json_buffer.h" />
+    <ClInclude Include="include\razorback\judgment.h" />
+    <ClInclude Include="include\razorback\list.h" />
+    <ClInclude Include="include\razorback\lock.h" />
+    <ClInclude Include="include\razorback\log.h" />
+    <ClInclude Include="include\razorback\messages.h" />
+    <ClInclude Include="include\razorback\message_formats.h" />
+    <ClInclude Include="include\razorback\metadata.h" />
+    <ClInclude Include="include\razorback\ntlv.h" />
+    <ClInclude Include="include\razorback\nugget.h" />
+    <ClInclude Include="include\razorback\queue.h" />
+    <ClInclude Include="include\razorback\queue_list.h" />
+    <ClInclude Include="include\razorback\response_queue.h" />
+    <ClInclude Include="include\razorback\socket.h" />
+    <ClInclude Include="include\razorback\string_list.h" />
+    <ClInclude Include="include\razorback\submission.h" />
+    <ClInclude Include="include\razorback\thread.h" />
+    <ClInclude Include="include\razorback\thread_pool.h" />
+    <ClInclude Include="include\razorback\timer.h" />
+    <ClInclude Include="include\razorback\types.h" />
+    <ClInclude Include="include\razorback\uuids.h" />
+    <ClInclude Include="include\razorback\visibility.h" />
+    <ClInclude Include="libssh\include\libssh\agent.h" />
+    <ClInclude Include="libssh\include\libssh\auth.h" />
+    <ClInclude Include="libssh\include\libssh\bind.h" />
+    <ClInclude Include="libssh\include\libssh\buffer.h" />
+    <ClInclude Include="libssh\include\libssh\callbacks.h" />
+    <ClInclude Include="libssh\include\libssh\channels.h" />
+    <ClInclude Include="libssh\include\libssh\crc32.h" />
+    <ClInclude Include="libssh\include\libssh\crypto.h" />
+    <ClInclude Include="libssh\include\libssh\dh.h" />
+    <ClInclude Include="libssh\include\libssh\ecdh.h" />
+    <ClInclude Include="libssh\include\libssh\kex.h" />
+    <ClInclude Include="libssh\include\libssh\keys.h" />
+    <ClInclude Include="libssh\include\libssh\legacy.h" />
+    <ClInclude Include="libssh\include\libssh\libcrypto.h" />
+    <ClInclude Include="libssh\include\libssh\libgcrypt.h" />
+    <ClInclude Include="libssh\include\libssh\libssh.h" />
+    <ClInclude Include="libssh\include\libssh\libsshpp.hpp" />
+    <ClInclude Include="libssh\include\libssh\messages.h" />
+    <ClInclude Include="libssh\include\libssh\misc.h" />
+    <ClInclude Include="libssh\include\libssh\options.h" />
+    <ClInclude Include="libssh\include\libssh\packet.h" />
+    <ClInclude Include="libssh\include\libssh\pcap.h" />
+    <ClInclude Include="libssh\include\libssh\pki.h" />
+    <ClInclude Include="libssh\include\libssh\pki_priv.h" />
+    <ClInclude Include="libssh\include\libssh\poll.h" />
+    <ClInclude Include="libssh\include\libssh\priv.h" />
+    <ClInclude Include="libssh\include\libssh\scp.h" />
+    <ClInclude Include="libssh\include\libssh\server.h" />
+    <ClInclude Include="libssh\include\libssh\session.h" />
+    <ClInclude Include="libssh\include\libssh\sftp.h" />
+    <ClInclude Include="libssh\include\libssh\socket.h" />
+    <ClInclude Include="libssh\include\libssh\ssh1.h" />
+    <ClInclude Include="libssh\include\libssh\ssh2.h" />
+    <ClInclude Include="libssh\include\libssh\string.h" />
+    <ClInclude Include="libssh\include\libssh\threads.h" />
+    <ClInclude Include="libssh\include\libssh\wrapper.h" />
+    <ClInclude Include="src\api_internal.h" />
+    <ClInclude Include="src\binary_buffer.h" />
+    <ClInclude Include="src\block_pool_private.h" />
+    <ClInclude Include="src\command_and_control.h" />
+    <ClInclude Include="src\connected_entity_private.h" />
+    <ClInclude Include="src\fantasia.h" />
+    <ClInclude Include="src\init.h" />
+    <ClInclude Include="src\inspection.h" />
+    <ClInclude Include="src\judgment_private.h" />
+    <ClInclude Include="src\local_cache.h" />
+    <ClInclude Include="src\messages\cnc\core.h" />
+    <ClInclude Include="src\messages\core.h" />
+    <ClInclude Include="src\runtime_config.h" />
+    <ClInclude Include="src\submission_private.h" />
+    <ClInclude Include="src\transfer\core.h" />
+    <ClInclude Include="win32\bobins.h" />
+    <ClInclude Include="win32\config.h" />
+    <ClInclude Include="win32\getopt.h" />
+    <ClInclude Include="win32\json\arraylist.h" />
+    <ClInclude Include="win32\json\bits.h" />
+    <ClInclude Include="win32\json\debug.h" />
+    <ClInclude Include="win32\json\json-config.h" />
+    <ClInclude Include="win32\json\json.h" />
+    <ClInclude Include="win32\json\json_object.h" />
+    <ClInclude Include="win32\json\json_object_private.h" />
+    <ClInclude Include="win32\json\json_tokener.h" />
+    <ClInclude Include="win32\json\json_util.h" />
+    <ClInclude Include="win32\json\linkhash.h" />
+    <ClInclude Include="win32\json\printbuf.h" />
+    <ClInclude Include="win32\safewindows.h" />
+    <ClInclude Include="win32\uuid\uuid.h" />
+    <ClInclude Include="win32\uuid\uuidd.h" />
+    <ClInclude Include="win32\uuid\uuidP.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\..\..\..\zlib-Win32\lib\zdll.lib" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,93 @@
+Defense Routing Table
+=====================
+
+The Defense Routing Table (DRT) resovles data submissions of a particular data
+type to a list of detection nuggets for that data to be sent to.  The intent of 
+the DRT is to ensure that for any given data input, one of each of the kinds of
+detection nugget available are assigned to evaluate the data block.  For example,
+this is a DRT entry for the data type "PDF Document".
+
+Data Entry:  PDF Document
+
+        App Entry: SF - Test Detector v.1
+                Entry ID: 1000
+                Name: PDF_NUGGET_01
+                Socket: 127.0.0.1:10000
+
+                Entry ID: 2000
+                Name: PDF_NUGGET_02
+                Socket: 127.0.0.1:20000
+
+                Entry ID: 3000
+                Name: PDF_NUGGET_03
+                Socket: 127.0.0.1:30000
+
+        App Entry: SF - TEST Detector v.2
+                Entry ID: 4000
+                Name: PDF_NUGGET_02
+                Socket: 127.0.0.1:40000
+
+                Entry ID: 5000
+                Name: MAIL_NUGGET_03
+                Socket: 127.0.0.1:50000
+
+In this case, there are two distinct kinds of nuggets that have registered as
+capable of handling PDF documents.  "SF - Test Detector v.1", with three active
+nuggets, and "SF - TEST Detector v.2" with two active nuggets.  These two nugget
+types both handle PDF files, but contain different approaches to detection.
+
+When receiving PDF Files, the DRT will ensure that one copy of the data is sent
+to one nugget from each of the two App Entry lists.  Currently, this is a simple
+round-robin database.  So data, based on the above table, would be handled in the
+following way:
+
+PDF_DOC 1:     Nugget 1000 & Nugget 4000
+PDF_DOC 2:     Nugget 2000 & Nugget 5000
+PDF_DOC 3:     Nugget_3000 & Nugget 4000
+PDF_DOC 4:     Nugget_1000 & Nugget 5000
+...
+
+MUCH MORE VERBOSE EXPLANATION
+=============================
+In memory, the route table exists as a cascading set of three different kinds of
+linked lists.  The structures are in rzb_router.h:
+
+typedef struct _ROUTEENTRY
+{
+    NUGGETENTRY *nugget;
+    struct _ROUTEENTRY *next;
+} ROUTEENTRY;
+
+typedef struct _APPENTRY
+{
+    uuid_t nugapp;
+    ROUTEENTRY *ondeck;
+    ROUTEENTRY *routehead;
+    struct _APPENTRY *next;
+};
+
+typedef struct _DATAENTRY
+{
+    uuid_t datatype;
+    APPENTRY *apphead;
+    struct _DATAENTRY *next;
+} DATAENTRY;
+
+The first structure (DATAENTRY) is a list of the kinds of data that the system handles. It
+would look someting like:
+
+PDF File -> SMTP Capture -> PE Executable -> Adobe Flash
+
+For each DATAENTRY, there is an APPENTRY list.  This is a list of each of the kinds of
+nugget that have declared interest in the particular data type.  For example, the list
+might look like:
+
+"Sourcefire PDF Analyzer" -> "Zynamics PDF Discector" -> "ClamAV 0.9.6"
+
+Each APPENETRY has a pointer to the beginning of the ROUTEENTRY list (routehead) and a node
+in the ROUTEENTRY list (ondeck).  The "ondeck" pointer is the next entry in the ROUTEENTRY
+list to be allocated data for evaluation.  "ondeck" is modified after allocation by setting
+"ondeck" to the next route entry or "routehead", if "ondeck" is the last entry in the list.
+
+The ROUTEENTRY structure simply holds a pointer to the NUGGETENTRY node that describes
+the nugget that registered as well as a pointer to the next entry on the list.

@@ -1,0 +1,20 @@
+#  The "NuggetID" is a UUID that uniquely identifies this
+#  specific instance of the nugget.  Each running nugget
+#  must have a unique UUID.  The dispatcher will refuse
+#  connections from duplicate UUIDs or from UUIDS that are
+#  unregistered.
+#
+#  Register your new nuggetID using the script in dispatcher/scripts:
+#
+#  ./addNugget --uuid=4e7e65f9-e0e3-4329-9ec6-eb01c763440e --name="New Nugget" --location="some closet" --contact="sysadmin" --notes="Nothing to see here"
+#
+#
+NuggetId="526d9b51-95b9-4447-acaa-972a603e6810";
+OFFICECAT_PATH="@libexecdir@/officecat.exe";
+
+## Values of zero for the following thread counts mean use the values configured in api.conf
+Threads: {
+    Initial=0;
+    Max=0;
+};
+

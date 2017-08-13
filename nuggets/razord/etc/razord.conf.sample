@@ -1,0 +1,39 @@
+
+NuggetId="99a90c87-bdb5-4ae6-9d8a-5af0b17cdd6a";
+PidFile="/var/run/razorback/razord.pid";
+
+# User="razorback";
+
+TCPSocket: {
+    Enabled="false";
+    Address="127.0.0.1";
+    Port=3311;
+};
+
+LocalSocket: {
+    Enabled="true";
+    Path="/tmp/razord.sock";
+#    Group="razorback";
+    Mode=666;
+};
+
+Stream: {
+    PortMin=1024;
+    PortMax=65535;
+};
+
+MaxThreads=10;
+MaxQueue=100;
+
+Timeout: {
+    Idle=30;
+    Read=120;
+    Command=5;
+    SendBuf=500;
+};
+
+Log: {
+    FileUnlock="false";
+    Time="false";
+    Clean="false";
+};

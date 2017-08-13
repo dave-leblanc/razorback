@@ -1,0 +1,33 @@
+SWF Nugget
+----------
+
+-- Overview -- 
+
+SWF Nugget is a Razorback Detection Nugget that scans Flash files collected by 
+Razorback Collector Nuggets. SWF Nugget decompresses (as necessary) and 
+parses Flash files to detect attacks exploiting known vulnerabilities. 
+
+The scan results are sent back to Razorback Dispatcher to correlate with other
+Razorback Nuggets. 
+
+-- Status --
+
+Currently, it detects the following malicious Flash file that exploits the
+following CVEs:
+
+CVE-2005-2628
+CVE-2006-0323
+CVE-2007-0071
+
+-- Future Work --
+
+* Include more detections
+* Research ActionScript interpretation
+* Implement embedded data extraction such as JPEG, PNG, GIF and send back to
+  Razorback Dispatcher
+
+
+
+
+
+

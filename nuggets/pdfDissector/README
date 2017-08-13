@@ -1,0 +1,17 @@
+This detection nugget requires the installation of the Zynamics PDF dissector.
+http://www.zynamics.com/dissector.html
+
+Installation:
+   Install the latest version of jython (this requires 2.5.1+ which is not in the ubuntu packages).
+    http://www.jython.org
+
+   Install the pefile module into the jython installtion.
+   http://code.google.com/p/pefile/
+
+   Run the usual: ./configure && make && make install
+
+   Download and install the latest version of PDF dissector from zynamics:
+   http://www.zynamics.com/dissector.html
+
+   Copy the bundled sample config file to: rzb_pdfdissector.conf and update the zynamics path.
+

@@ -1,0 +1,9 @@
+SUBDIRS= 
+
+if PLATFORM_FREEBSD
+SUBDIRS+= freebsd
+endif
+
+if PLATFORM_LINUX
+SUBDIRS+= linux
+endif

@@ -1,0 +1,15 @@
+Currently, Razorback uses only MySQL.
+
+Only the dispatcher and the UI communicates directly with the database server.
+The dispatcher.conf file must have the appropriate connection information for
+your database information.
+
+To seed your database with the initial data necessary for the system:
+
+In dipatcher/share are two files, razorback.sql and razorback-with-data.sql.  The
+easiest way to get mysql setup is to cd into that directory and launch mysql.  Then:
+
+create database razorback;
+use razorback;
+source razorback.sql;
+source razorback-with-data.sql;

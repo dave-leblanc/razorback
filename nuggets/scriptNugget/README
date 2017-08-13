@@ -1,0 +1,4 @@
+After installing the script nugget you will need to install the language bindings for the scripting language you are using.
+
+For example, the ruby gem for the Razorback scripting nugget is in ./razorbacktm/bindings/ruby.  From that directory run 'gem build razorback.gemspec'.  This will build out the gem, allowing you to run 'sudo gem install scriptNugget-ruby-0.3.0.gem'.
+

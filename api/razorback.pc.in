@@ -1,0 +1,17 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+bindir=@bindir@
+libdir=@libdir@
+includedir=@includedir@
+datadir=@datarootdir@
+mandir=@inforootdir@
+infodir=@inforootdir@
+
+Name: Razorback
+Description: Razorback API
+URL: https://sourceforge.net/apps/trac/razorbacktm/
+Version: @VERSION@
+Libs: -L${libdir} -lrazorback_api
+Libs.private: @LIBS@
+Cflags: -I${includedir}
+

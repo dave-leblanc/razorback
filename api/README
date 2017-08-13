@@ -1,0 +1,33 @@
+Razorback
+========================
+
+Quick:
+./configure
+make
+make install
+
+Long:
+Debugging can be enabled by typing ./configure --enable-debug
+Run ./configure --help for all of the available options
+
+Requirements:
+uuid libraries
+ssl libraries
+magic libraries
+pthread libraries
+m libraries
+dl libraries
+
+PKG-CONFIG:
+The install target installs a package metadata file in ${libdir}/pkgconfig (/usr/local/lib/pkkconfig by default).
+The pkg-config utility can be used to acquire the correct CFLAGS and LDFLAGS needed to compile a nugget.
+
+pkg-config --cflags razorback
+pkg-config --libs razorback
+
+The PKG_CHECK_MODULES macro can be used to acquire the CFLAGS and LDFLAGS from within a nugget configure script.
+
+PKG_CHECK_MODULES([RZB], [razorback])
+
+The above call will provide RZB_CFLAGS and RZB_LDFLAGS to use in the autoconf/automake process.
+

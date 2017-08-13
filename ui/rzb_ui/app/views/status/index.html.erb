@@ -1,0 +1,107 @@
+<div id='system-status-wrap'>
+	<table height='100%' width='100%'>
+		<tr>
+			<td width='50%' valign='top'>
+				<div class='collapsibleContainer status' id='system-status-container' title='System Status'>
+					<div id='system-status' class='system-status'>
+						<%= render :active_scaffold => "system_status" %>
+					</div>
+				</div>
+				<div class="status footer"></div>
+
+				<div class='collapsibleContainer status' title='Nugget Status'>
+					<div id='nugget-status' class='nugget-status'>
+						<%= render :active_scaffold => "nugget_status" %>
+					</div>
+				</div>
+				<div class="status footer"></div>
+
+			</td>
+			<td width='2' color='blue'><div style="border-left:2px solid #000;height:98%"></div></td>
+
+			<td width='50%' valign='top'>
+				<div class='collapsibleContainer status' id='routing-table-container' title='Routing Table'>
+					<div id='routing-table' class='routing-table'>
+						<%= render :active_scaffold => "routing_table" %>
+					</div>
+				</div>
+				<div class="status footer"></div>
+
+				<div class='collapsibleContainer status' id='routing-status-container' title='Routing Statistics'>
+					<div id='routing-status' class='routing-status'>
+						<%= render :active_scaffold => "routing_counts" %>
+					</div>
+				</div>
+				<div class="status footer"></div>
+
+
+			</td>
+		</tr>
+	</table>
+</div>
+
+<script>
+	var last_updated = "";
+
+	function update_status() {
+		var data = jQuery.ajax({
+			url: '<%= url_for :controller => "nugget_status", :action => "check_updates" %>?last_updated=' + last_updated,
+			async: false,
+		}).responseText;
+
+		if(data == "true") {
+			var data = jQuery.ajax({
+				url: '<%= url_for :controller => "nugget_status", :action => "refresh" %>',
+				async: false,
+			}).responseText;
+			
+			jQuery('#nugget-status').html(data);
+		}
+
+
+		var data = jQuery.ajax({
+			url: '<%= url_for :controller => "system_status", :action => "check_updates" %>?last_updated=' + last_updated,
+			async: false,
+		}).responseText;
+
+		if(data == "true") {
+			var data = jQuery.ajax({
+				url: '<%= url_for :controller => "system_status", :action => "refresh" %>',
+				async: false,
+			}).responseText;
+
+			jQuery('#system-status').html(data);
+		}
+
+		var data = jQuery.ajax({
+			url: '<%= url_for :controller => "routing_counts", :action => "check_updates" %>?last_updated=' + last_updated,
+			async: false,
+		}).responseText;
+
+		if(data == "true") {
+			var data = jQuery.ajax({
+				url: '<%= url_for :controller => "routing_counts", :action => "refresh" %>',
+				async: false,
+			}).responseText;
+
+			jQuery('#routing-status').html(data);
+		}
+
+		last_updated = new Date().getTime() / 1000;
+	}
+
+	setInterval('update_status()', 3000);
+	last_updated = new Date().getTime() / 1000;
+
+</script>
+
+<script language="javascript" type="text/javascript">
+	jQuery(document).ready(function() {
+		jQuery(".collapsibleContainer").collapsiblePanel();
+		jQuery("#system-status-container .collapsibleContainerContent").slideToggle();
+		jQuery("#routing-table-container .collapsibleContainerContent").slideToggle();
+	});
+
+</script>
+
+

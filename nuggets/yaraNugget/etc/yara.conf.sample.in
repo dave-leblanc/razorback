@@ -1,0 +1,8 @@
+NuggetId="428d34c2-95c4-438c-ba10-f8684b68e109";
+RULE_PATH="@sysconfdir@/yara";
+## Values of zero for the following thread counts mean use the values configured in api.conf
+Threads: {
+    Initial=0;
+    Max=0;
+};
+

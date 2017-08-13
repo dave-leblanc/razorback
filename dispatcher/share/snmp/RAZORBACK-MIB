@@ -1,0 +1,82 @@
+RAZORBACK-MIB DEFINITIONS ::= BEGIN
+
+-- Razorback MIB definition
+
+IMPORTS
+    enterprises                             FROM RFC1155-SMI
+    OBJECT-TYPE, Integer32, Counter32,
+    MODULE-IDENTITY                         FROM SNMPv2-SMI
+    MODULE-COMPLIANCE, OBJECT-GROUP         FROM SNMPv2-CONF;
+
+sourcefire OBJECT IDENTIFIER ::= { enterprises  14223 }
+
+razorbackMIB MODULE-IDENTITY
+    LAST-UPDATED "201108160000Z"
+    ORGANIZATION "Sourcefire"
+    CONTACT-INFO "email: razorbacktb-users@lists.sourceforge.net"
+    DESCRIPTION "Razorback SMI"
+    ::= { sourcefire 3 }
+
+rzbStats OBJECT IDENTIFIER ::= { razorbackMIB 1 }
+
+rzbUptime OBJECT-TYPE
+    SYNTAX Integer32
+    MAX-ACCESS read-only
+    STATUS current
+    DESCRIPTION "Hello"
+    DEFVAL { 0 }
+    ::= { rzbStats 1 }
+
+routing OBJECT IDENTIFIER ::= { rzbStats 2 }
+
+dataTypesTable OBJECT-TYPE
+    SYNTAX SEQUENCE OF DataTypeRoutingEntry
+    MAX-ACCESS not-accessible
+    STATUS current
+    DESCRIPTION "Data type table"
+    ::= { routing 1 }
+
+dataTypeRoutingEntry OBJECT-TYPE
+    SYNTAX DataTypeRoutingEntry
+    MAX-ACCESS not-accessible
+    STATUS current
+    DESCRIPTION "Stats about a data type"
+    INDEX { dataTypeName }
+    ::= { dataTypesTable 1 }
+
+DataTypeRoutingEntry ::= SEQUENCE {
+    dataTypeRoutingEntryName        OCTET STRING,
+    dataTypeRoutingEntryRequests    Counter32,
+    dataTypeRoutingEntrySuccess     Counter32,
+    dataTypeRoutingEntryError       Counter32
+}
+
+dataTypeRoutingEntryName OBJECT-TYPE
+    SYNTAX OCTET STRING (SIZE(0..64))
+    MAX-ACCESS not-accessible
+    STATUS current
+    DESCRIPTION "Name of the data type"
+    ::= { dataTypeRoutingEntry 1 }
+
+dataTypeRoutingEntryRequests OBJECT-TYPE
+    SYNTAX Counter32
+    MAX-ACCESS not-accessible
+    STATUS current
+    DESCRIPTION "Number of requests for the data type"
+    ::= { dataTypeRoutingEntry 2 }
+
+dataTypeRoutingEntrySuccess OBJECT-TYPE
+    SYNTAX Counter32
+    MAX-ACCESS not-accessible
+    STATUS current
+    DESCRIPTION "Number of sucessful routing operations for the data type"
+    ::= { dataTypeRoutingEntry 3 }
+
+dataTypeRoutingEntryError OBJECT-TYPE
+    SYNTAX Counter32
+    MAX-ACCESS not-accessible
+    STATUS current
+    DESCRIPTION "Number of failed routing operations for the data type"
+    ::= { dataTypeRoutingEntry 4 }
+
+END

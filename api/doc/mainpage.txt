@@ -1,0 +1,15 @@
+/** @mainpage Razorback API Documentation
+
+@section intro Introduction
+
+This is the documentation for the Razorback API.  Here you should find 
+all of the information that you requre to get started developing nuggets.
+
+@section utils The utils API
+
+rzb_utils_types.h - Provides the types used inside the utils API.
+
+rzb_conf.h - Provides the configuration loading API used by the API. 
+
+@section api The Main API
+ */

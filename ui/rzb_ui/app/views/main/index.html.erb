@@ -1,0 +1,36 @@
+<div class="collapsibleContainer ui-widget" style="width: 360px; margin: auto;">
+<div class='collapsibleContainerTitle ui-widget-header' >Upload a File</div>
+<div class="collapsibleContainerContent ui-widget-content">
+<table width='100%' align='center'>
+
+	<% form_for(Block.new, :html => { :multipart => true }, :url => { :controller => 'uploads', :action => 'upload_block' }) do |f| %>
+		<tr>
+			<td align="center">
+				<%= f.file_field 'upload' %><br />
+			</td>
+        </tr>
+        <tr>
+			<td align='center'>
+				<input type="checkbox" name="advanced_toggle" onclick="jQuery('#data_types').toggle()" value="Advanced">Advanced</input>
+			</td>
+		</tr>
+		<tr id="data_types">
+            <td align='center'>Data Type:
+                <%= f.collection_select :data_type, @data_types, :Name, :Description %><br />
+            </td>
+		<tr>
+
+		<tr>
+			<td align='center'>
+				<%= f.submit('Submit to Razorback') %>
+			</td>
+		</tr>
+
+	<% end %>
+</table>
+</div>
+</div>
+<div class="status footer" style="width: 360px; margin: auto;"></div>
+<script>
+	jQuery('#data_types').toggle();
+</script>

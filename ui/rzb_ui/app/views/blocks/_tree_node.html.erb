@@ -1,0 +1,11 @@
+<li id='<%= @block.id %>' rel="<%= @block.blocks.empty? ? 'file' : 'folder' %>-<%= @block.result_string.downcase %>">
+	<%= link_to "[#{@block.data_type.Name.gsub('_FILE', '').downcase}] #{@block.display_id_short}", 
+		{ :controller => 'blocks', :action => 'report', :id => @block.id }, { :title => @block.hash_digest } %>
+
+	<ul>
+		<% @block.blocks.sort{|x,y| x.hash_digest <=> y.hash_digest}.each do |block| %>
+			<% @block = block %>
+			<%= render :partial => "tree_node"  %>
+       	<% end %>
+	</ul>
+</li>

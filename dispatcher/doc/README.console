@@ -1,0 +1,80 @@
+CONSOLE CONFIGURATION
+=====================
+Configure console access in dispatcher.conf:
+
+Configuration is straightforward.  Both telnet and ssh can be activated by setting Enable equal to 1.  The IP address and port to bind to is set in the bind configuration section.  Login name and password for non-priveledged users are set first.  To configure the system, you need to enter the enable password configured with EnablePassword equals.
+
+Console: {
+    Telnet: {
+        Enable=1;
+        Bind: {
+            Address="10.1.1.1";
+            Port=10001;
+        };
+    };
+    SSH: {
+        Enable=1;
+        Bind: {
+            Address="10.1.1.1";
+            Port=10002;
+        };
+    };
+    User="user";
+    Password="user_pass";
+    EnablePassword="enable_pass";
+};
+
+Once you've connected via telnet or ssh, you have the following command options:
+
+NON-PRIVILEGED CONFIGURATION MODE
+================================
+enable -- enter privileged user mode
+show commands:
+show cache stats -- display statistics related to cache by data type
+show datatypes -- display list of known datatypes
+show dispatcher status -- show the state of the dispatcher
+show dispatcher neighbours -- show the state of online dispachers
+show metadata types -- display list of known metadata types
+show metadata names -- display list of known metadata names
+show nugget status -- display list of registered nuggets
+show nugget registrations -- display list of authorized nugget registrations
+show nugget apptypes -- display list of valid nugget application types
+show threads -- display number and type of threads running on the dispatcher
+show routing summary -- display the current routing table
+show routing stats -- display requests, successes and errors on a per-datatype basis
+
+PRIVILEGED CONFIGURATION MODE
+=============================
+configure terminal -- enter configuration mode
+flush cache global -- flush the global cache
+flush cache local -- flush the local caches
+flush cache all -- flush all caches
+launch cacheProcessor -- initiate another thread to handle cache processing
+launch judgmentProcessor -- initiate another thread to handle judgment processing
+launch logProcessor -- initiate another thread to handle log request processing
+launch submissionProcessor -- initiate another thread to handle 
+
+CONFIGURATION COMMANDS
+======================
+nugget <Nugget UUID> -- enter nugget configuation
+
+For the registration functions, you can replace the UUID with "gen" and the system will automatically generate a UUID on your behalf.
+
+register apptype <NAME> <TYPE> <UUID> <Description>:
+Register a new apptype for nuggets to register as.  Type here must be "INSPECTION", "COLLECTION" or "OUTPUT".
+register datatype <NAME> <UUID> <Description> -- register a new data type.
+register metadata name <NAME> <UUID> <Description> -- register a new metadata name
+register metadata type <NAME> <UUID> <Description> -- register a new metadata type
+
+The following register specific instances of nuggets:
+register nugget collection <App_Type> <NAME> <UUID> -- register a new collection nugget
+register nugget inspection <App_Type> <NAME> <UUID> -- register a new inspection nugget
+register nugget master <NAME> <UUID> -- register a new master nugget
+
+NUGGET CONFIGURATION COMMMANDS
+==============================
+name <String> -- Add or change the name of the nugget
+location <String> -- Add location information for the nugget
+contact <String> -- Add contact information for the nugget
+notes <String> -- Add notes about the nugget
+save -- Save nugget information and exit configuration

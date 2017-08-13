@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "logNugget", "logNugget.vcxproj", "{AACF13F2-3364-4833-88A8-B3F3A0663BCD}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "win32\Setup\Setup.vdproj", "{0D96AA6F-08F3-4950-AEA5-E152A722D85A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AACF13F2-3364-4833-88A8-B3F3A0663BCD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{AACF13F2-3364-4833-88A8-B3F3A0663BCD}.Debug|Win32.Build.0 = Debug|Win32
+		{AACF13F2-3364-4833-88A8-B3F3A0663BCD}.Release|Win32.ActiveCfg = Release|Win32
+		{AACF13F2-3364-4833-88A8-B3F3A0663BCD}.Release|Win32.Build.0 = Release|Win32
+		{0D96AA6F-08F3-4950-AEA5-E152A722D85A}.Debug|Win32.ActiveCfg = Debug
+		{0D96AA6F-08F3-4950-AEA5-E152A722D85A}.Debug|Win32.Build.0 = Debug
+		{0D96AA6F-08F3-4950-AEA5-E152A722D85A}.Release|Win32.ActiveCfg = Release
+		{0D96AA6F-08F3-4950-AEA5-E152A722D85A}.Release|Win32.Build.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

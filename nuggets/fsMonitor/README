@@ -1,0 +1,13 @@
+This nugget uses inotify to monitor any number of file system paths 
+and send any changed or created files to the dispatcher for collection.
+
+Required:
+   libinotifytools0-dev (ubuntu package)
+
+Build:
+   # Update RZB_API_PATH to point to the directory you built the api.
+   make
+ 
+Usage:
+   # Copy rzb.conf and update required information to point to your dispatcher
+   ./fsmonitor /monitor/path /monitor/path2

@@ -1,0 +1,38 @@
+Data blocks are marked with one or more flags to indicate their status within their system.  The following is the C definition of the flags currently in use by Razorback:
+
+#define SF_FLAG_GOOD            0x00000001
+#define SF_FLAG_BAD             0x00000002
+#define SF_FLAG_WHITE_LIST      0x00000004
+#define SF_FLAG_BLACK_LIST      0x00000008
+#define SF_FLAG_DIRTY           0x00000010
+#define SF_FLAG_CANHAZ          0x00000020
+#define SF_FLAG_PROCESSING      0x00000040
+#define SF_FLAG_DODGY           0x00000080
+#define SF_FLAG_SUSPICIOUS      0x00000080
+#define SF_FLAG_ALL             0xffffffff
+
+This is what these flags mean:
+
+Good
+The block has been analyzed by all systems and has not been marked as bad.  This isn't a guarantee that the block is not malicious, merely a reflection of the fact that none of the connected detection nuggets marked the block as bad.
+
+Bad
+The block has been flagged as bad by one or more detection systems.
+
+White List
+This flag is intended for use in advance of seeing a block.  Loading a white list means that whenever the block is seen, it is treated as good.  The block will not be sent to detection systems.
+
+Black List
+Similar to white list, black list is intended to be loaded and flagged before the system sees the block.  It will then immediately treat the block as bad without passing it to any detection system.
+
+Dirty
+This flag is set when the data block has been viewed in the past, but we have updated the detection systems.  This flag tells the system to ignore the good/bad flags and get the block for analysis anyways.  In this way we can ensure that data blocks that are received after an upgrade in detection capability are re-inspected with the new detection algorithms.
+
+Canhaz
+This flag is used inside the system to tell the collection nuggets to submit the data block for evaluation.
+
+Processing
+This flag is used to communicate to collection nuggets that we still don't have a good/bad determination but that we don't need the data block because we're already reviewing it.
+
+Dodgy/Suspicious
+This flag is provided so that detection systems can flag a data block as suspicious but still have it treated as good.  Users can then review the suspicious data blocks themselves to determine if the block needs to be set to bad.

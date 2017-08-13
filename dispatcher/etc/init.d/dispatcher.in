@@ -1,0 +1,92 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:             dispatcher
+# Required-Start:       $remote_fs $syslog
+# Required-Stop:        $remote_fs $syslog
+# Should-Start:         $local_fs
+# Should-Stop:          $local_fs
+# Default-Start:        2 3 4 5
+# Default-Stop:         0 1 6
+# Short-Description:    Start razorback dispatcher
+# Description:          Start up razorback dispatcher
+### END INIT INFO
+
+prefix=@prefix@
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+DAEMON=${prefix}/bin/dispatcher
+NAME=dispatcher
+DESC=dispatcher
+PIDDIR=@localstatedir@/razorback
+PIDFILE=@localstatedir@/razorback/$NAME.pid
+
+test -x $DAEMON || exit 0
+
+set -e
+
+. /lib/lsb/init-functions
+
+# Edit /etc/default/dispatcher to change this.
+ENABLE_DISPATCHER=no
+test -r /etc/default/dispatcher && . /etc/default/dispatcher
+
+check_keys() {
+    if [ ! -e ${prefix}/etc/razorback/ssh_host_dsa_key ]; then
+        ssh-keygen -h -t dsa -f ${prefix}/etc/razorback/ssh_host_dsa_key -N ""
+    fi
+    if [ ! -e ${prefix}/etc/razorback/ssh_host_rsa_key ]; then
+        ssh-keygen -h -t rsa -f ${prefix}/etc/razorback/ssh_host_rsa_key -N ""
+    fi
+    if [ ! -e ${prefix}/etc/razorback/ssh_host_v1_key ]; then
+        ssh-keygen -h -t rsa1 -f ${prefix}/etc/razorback/ssh_host_v1_key -N ""
+    fi
+}
+check_run_dir() {
+    if [ ! -e ${PIDDIR} ]; then
+        mkdir -p ${PIDDIR}
+    fi
+}
+case "$1" in
+  start)
+        echo -n "Starting $DESC: "
+  if [ $ENABLE_DISPATCHER = yes ]; then
+        check_keys
+        check_run_dir
+        start-stop-daemon --start --quiet --pidfile $PIDFILE --exec $DAEMON
+        pidof dispatcher >> $PIDFILE
+        echo "$NAME."
+        else
+                echo "$NAME disabled in /etc/default/memcached."
+        fi
+        ;;
+  stop)
+        echo -n "Stopping $DESC: "
+        start-stop-daemon --stop --quiet --oknodo --pidfile $PIDFILE
+        echo "$NAME."
+        rm -f $PIDFILE
+        ;;
+
+  restart|force-reload)
+        #
+        #       If the "reload" option is implemented, move the "force-reload"
+        #       option to the "reload" entry above. If not, "force-reload" is
+        #       just the same as "restart".
+        #
+        echo -n "Restarting $DESC: "
+        start-stop-daemon --stop --quiet --oknodo --pidfile $PIDFILE
+        rm -f $PIDFILE
+        sleep 1
+        start-stop-daemon --start --quiet --exec $DAEMON
+        echo "$NAME."
+        ;;
+  status)
+        status_of_proc $DAEMON $NAME && exit 0 || exit $?
+        ;;
+  *)
+        N=/etc/init.d/$NAME
+        echo "Usage: $N {start|stop|restart|force-reload|status}" >&2
+        exit 1
+        ;;
+esac
+
+exit 0
+

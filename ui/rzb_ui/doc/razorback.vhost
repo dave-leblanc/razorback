@@ -1,0 +1,7 @@
+<VirtualHost *:80>
+	DocumentRoot /var/www/sites/rzb_ui/public
+	<Directory /var/www/sites/rzb_ui/public >
+		AllowOverride all
+		Options -MultiViews
+	</Directory>
+</VirtualHost>

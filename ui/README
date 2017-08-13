@@ -1,0 +1,92 @@
+Ubuntu installation instructions:
+	# Start by downloading the required ubuntu packages
+	sudo apt-get install build-essential ruby1.8 ri1.8 ruby1.8-dev apache2 apache2-prefork-dev libmysqlclient16-dev libcurl4-openssl-dev
+
+	# Next download and install the latest version of ruby gems
+	wget http://production.cf.rubygems.org/rubygems/rubygems-1.8.6.tgz
+	tar -zxvf rubygems-1.8.6.tgz
+	cd rubygems-1.8.6
+	sudo ruby1.8 setup.rb
+
+	# Optionally, configure your ruby instance to make your life easier
+	update-alternatives --install /usr/bin/ruby ruby /usr/bin/ruby1.8 500 --slave /usr/share/man/man1/ruby.1.gz ruby.1.gz /usr/share/man/man1/ruby1.8.1.gz --slave /usr/bin/ri ri /usr/bin/ri1.8 --slave /usr/bin/irb irb /usr/bin/irb1.8 --slave /usr/bin/rdoc rdoc /usr/bin/rdoc1.8 --slave /usr/bin/gem gem /usr/bin/gem1.8 
+	update-alternatives --config ruby
+	# Choose the 1.8 option
+
+	# Build the required gems
+	sudo gem install rails -v=2.3.12
+	sudo gem install mysql
+	sudo gem install passenger
+	sudo gem install uuidtools
+	sudo gem install daemons
+	sudo gem install file-tail
+	sudo gem install sys-proctable
+	sudo gem install rdoc -v=2.4.3
+	sudo gem uninstall rdoc -v=3.8
+
+	# Build the passenger apache module
+	# Important: Save the specific lines during the module installation process as you'll need them later
+	sudo /usr/bin/passenger-install-apache2-module
+
+	# Create the apache module loader file and add the following lines:
+	sudo vi /etc/apache2/mods-available/passenger.load:
+		LoadModule passenger_module /usr/lib/ruby/gems/1.8/gems/passenger-3.0.7/ext/apache2/mod_passenger.so
+
+	# Create the apache module config file and add the following lines:
+	sudo vi /etc/apache2/mods-available/passenger.conf:
+		PassengerRoot /usr/lib/ruby/gems/1.8/gems/passenger-3.0.7
+		PassengerRuby /usr/bin/ruby1.8
+
+
+	# Create the symlink to load this module
+	sudo ln -s /etc/apache2/mods-available/passenger.{load,conf} /etc/apache2/mods-enabled/
+
+	# Now copy over the vhost config file into your apache directory and symlink
+	sudo cp doc/razorback.vhost /etc/apache2/sites-available/razorback
+	sudo ln -s /etc/apache2/sites-available/razorback /etc/apache2/sites-enabled
+	
+	# Update your vhost config to point to your correct paths
+
+	sudo vi /etc/apache2/sites-available/razorback:
+	<VirtualHost *:80>
+    	DocumentRoot /var/www/sites/rzb_ui/public 	# Update to point to the public directory path in this directory
+    	<Directory /var/www/sites/rzb_ui/public >	# Update to the value in the line above
+        	AllowOverride all
+        	Options -MultiViews
+    	</Directory>
+	</VirtualHost>
+
+	# Remove the old default site (if there is one)
+	rm /etc/apache2/sites-enabled/000-default
+
+	# Finally update your database config with the correct credentials for your mysql razorback user
+	vi config/database.yml:
+		development:
+  		adapter: mysql
+  		database: razorback
+  		pool: 5
+  		timeout: 5000
+  		username: razorback
+  		password: razorback
+		host: localhost
+
+		production:
+  		adapter: mysql
+  		database: razorback
+  		pool: 5
+  		timeout: 5000
+  		username: razorback
+  		password: razorback
+		host: localhost
+
+	# Now create the needed tables for the ui
+	rake db:migrate
+
+	# You should now be able to start apache and point your browser to the dns name you used in the vhost file
+	sudo service apache2 restart
+
+	# Now start the system and nugget monitors (from the rzb_ui root directory)
+	./script/daemons start
+	
+	# You'll also need to configure your razorback path inside of the application by going to
+	http://<your_ip>/configuration

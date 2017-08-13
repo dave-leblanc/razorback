@@ -1,0 +1,20 @@
+Statistics are enabled by passing the following ./configure option:
+
+--enable-routing-stats
+
+Stats for razorback are currently written to /tmp/rzb.stats every 5 seconds.  The list is comma separated key value pairs.
+The structure for the pair is < system > -<key >:<value >.  For example:
+
+R - DTC: 1, 
+
+Is a stat from the routing system (R) , the key represents the data type count, and the value is currently "1".  
+
+Currently only statisitcs for the routing system are in place.  The following are the abbreivations used in the output:
+
+R-DTC           Data Type Count-- The number of data types registered with the system 
+R-ATC           App Type Count-- The number of unique nugget types registered with the system 
+R-REC           Route Entry Count-- The number of entries in the routing table 
+R-RRC           Route Request Count-- The number of times the routing system has been asked to route a datablock 
+R-RSC           Route Success Count-- The number of times the routing system succesfully routed a datablock 
+R-<Datatype>    Routed per Datatype-- The number of times the routing system has succsefully route a datablock of 
+                the specified data type (for example R - FLASH_FILE)

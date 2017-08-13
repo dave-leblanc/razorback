@@ -1,0 +1,64 @@
+<% if @block.alerts.size > 0 %>
+	<div class="collapsibleContainer bad" title="Alerts">
+		<%= render :active_scaffold => "alerts", :constraints => { :Block_ID => @block.id } %>
+	</div>
+
+	<div class='collapsible-container-footer'></div>
+<% end %>
+
+<% if @block.events.size > 0 %>
+	<div class="collapsibleContainer good" title="Events (<%= @block.events.size %>)">
+		<%= render :active_scaffold => "block_events", :constraints => { :Block_ID => @block.id }, :id => @block.id %>
+	</div>
+
+	<div class='collapsible-container-footer'></div>
+<% end %>
+
+<% if @block.metadatas.size > 0 %>
+	<div class="collapsibleContainer good" title="Metadata">
+		<%= render :active_scaffold => "metadatas", :conditions => [
+					"Metadata_ID IN (?)", @block.metadatas.map {|m| m.id}
+				]
+		%>
+	</div>
+
+	<div class='collapsible-container-footer'></div>
+<% end %>
+
+
+<% if @block.filename_metadatas.size > 0 %>
+	<div class="collapsibleContainer good" title="Known Filenames">
+		<%= render :active_scaffold => "metadatas", :conditions => [
+					"Metadata_ID IN (?)", @block.filename_metadatas.map {|m| m.id}
+				]
+		%>
+	</div>
+
+	<div class='collapsible-container-footer'></div>
+<% end %>
+
+<% if @block.malwarename_metadatas.size > 0 %>
+	<div class="collapsibleContainer good" title="Malware Names">
+		<%= render :active_scaffold => "metadatas", :conditions => [
+					"Metadata_ID IN (?)", @block.malwarename_metadatas.map {|m| m.id}
+				]
+		%>
+	</div>
+
+	<div class='collapsible-container-footer'></div>
+<% end %>
+
+<% if @block.block_inspections.size > 0 %>
+	<div class="collapsibleContainer good" title="Detection Engines">
+		<%= render :active_scaffold => "block_inspections", :constraints => { :Block_ID => @block.id } %>
+	</div>
+
+	<div class='collapsible-container-footer'></div>
+<% end %>
+
+<script language="javascript" type="text/javascript">
+    jQuery(document).ready(function() {
+        jQuery(".collapsibleContainer").collapsiblePanel();
+    });
+
+</script>

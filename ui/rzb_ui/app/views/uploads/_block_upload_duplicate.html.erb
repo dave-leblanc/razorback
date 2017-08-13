@@ -1,0 +1,4 @@
+<% if @block_upload %>
+	Your file has already been submitted for processing
+	<%= link_to @block_upload.block_hash, { :controller => 'block_uploads', :action => 'report', :id => @block_upload.id } %>
+<% end %>

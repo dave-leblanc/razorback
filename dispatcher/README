@@ -1,0 +1,46 @@
+Razorback DefCon Release
+========================
+
+Platform:
+Ubuntu Linux version 9.10, nothing is guaranteed to work on anything
+else at the moment, if ever. In fact, no guarantees that it will work
+for you regardless. But hey, it'll be a fun ride trying to make it
+function though right?
+
+Quick:
+configure
+make
+make install
+
+Long:
+Debugging can be enabled by typing ./configure --enable-debug
+Run ./configure --help for all of the available options
+
+Requirements:
+m libraries
+pthread libraries
+uuid libraries
+mysql development libraries
+ssl libraries for the API
+magic libraries for the API
+pcre libraries for the sample nuggets
+
+Database:
+Right now, MySQL is the only supported database. The schema can be found
+in the doc directory. Future releases will incorporate Hadoop support.
+
+TODO:
+
+API:
+The install target installs a package metadata file in ${libdir}/pkgconfig (/usr/local/lib/pkkconfig by default).
+The pkg-config utility can be used to acquire the correct CFLAGS and LDFLAGS needed to compile a nugget.
+
+pkg-config --cflags razorback
+pkg-config --libs razorback
+
+The PKG_CHECK_MODULES macro can be used to acquire the CFLAGS and LDFLAGS from within a nugget configure script.
+
+PKG_CHECK_MODULES([RZB], [razorback])
+
+The above call will provide RZB_CFLAGS and RZB_LDFLAGS to use in the autoconf/automake process.
+

@@ -1,0 +1,105 @@
+Global: {
+    MaxThreads=100;
+    HashType="SHA256";
+    MaxBlockSize=100;
+    HelloTime=2;
+    DeadTime=10;
+    MessageFormat="json";
+    TransferPassword="razorback";
+};
+
+Locality: {
+    Id=1;
+    BlockStore="/var/lib/razorback/blocks";
+    BlockStoreRemote="false";
+    BackupOrder: [ 2, 3, 4 ];
+};
+
+Cache: {
+    BadLimit=256;
+    GoodLimit=256;
+};
+
+MessageQueue: {
+    Host="localhost";
+    Port=61612;
+    User="User";
+    Password="Password";
+    SSL="False";
+};
+
+Submission: {
+    Pool: {
+        MaxItems=0;
+        MaxSize=0;
+        MaxItemSize=0;
+    };
+    GlobalCache: {
+        Request: {
+            Threads: {
+                Initial=1;
+                Max=100;
+            };
+        };
+        Response: {
+            Threads: {
+                Initial=1;
+                Max=100;
+            };
+        };
+    };
+    Transfer: {
+        Threads: {
+            Initial=1;
+            Max=100;
+        };
+    };
+};
+
+Inspection: {
+    Threads: {
+        Initial=5;
+        Max=100;
+    };
+};
+
+Log: {
+# Logging output is determined by its Destination option
+#
+#
+# Minimum two options required: Destination and Level
+# Destination may be one of the following: 
+#   syslog
+#   file
+#   stderr
+#
+    Destination="syslog";
+
+# Level may be one of the follwoing:
+#   debug
+#   info
+#   notice
+#   warning
+#   error
+#   critical
+#   alert
+#   emergency
+#
+    Level="debug";
+
+# Syslog_Facility may be one of the following:
+#   daemon
+#   user
+#   local1
+#   local2
+#   local3
+#   local4
+#   local5
+#   local6
+#   local7
+#
+    Syslog_Facility="daemon";
+
+# File is the path to the file to be used for logging.
+    File="/tmp/rzb.log";
+};

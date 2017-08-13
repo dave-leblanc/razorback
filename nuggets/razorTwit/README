@@ -1,0 +1,15 @@
+
+Install:
+
+    Net::Twitter
+    File::Spec
+    Net::Stomp
+    Config::General
+    JSON
+    Data::Dumper
+    Proc::Daemon
+
+Update twitter.conf.
+
+Run twitter.pl and follow the instructions.
+

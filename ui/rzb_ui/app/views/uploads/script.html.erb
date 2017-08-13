@@ -1,0 +1,30 @@
+<div class="collapsibleContainer ui-widget" style="width: 360px; margin: auto;">
+<div class='collapsibleContainerTitle ui-widget-header' >Upload new detection</div>
+<div class="collapsibleContainerContent ui-widget-content">
+<table width="100%">
+	<% form_for(DetectionScript.new, :html => { :multipart => true }, :url => { :controller => 'uploads', :action => 'upload_script' }) do |f| %>
+		<tr>
+			<td align'right' colspan='2'>
+				<%= f.file_field 'upload' %>
+			</td>
+		</tr>
+
+		<tr>
+			<td>Detection Type:</td>
+			<td align='right'>
+				<%= f.collection_select :id, DetectionScript.all, :id, :name %><br />
+			</td>
+		</tr>
+
+		<tr>
+			<td colspan='2' align='center'>
+				<%= f.submit('Upload New Detection') %>
+			</td>
+		</tr>
+
+	<% end %>
+</table>
+</div>
+</div>
+<div class="status footer" style="width: 360px; margin: auto;"></div>
+

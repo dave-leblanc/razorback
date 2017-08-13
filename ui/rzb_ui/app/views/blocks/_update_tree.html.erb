@@ -1,0 +1,138 @@
+<script>
+
+	var current_id = 0;
+
+	function update_tree() {
+		jQuery('#sidebar-report-tree-content').jstree("refresh");
+	}
+
+	jQuery(function() {
+		jQuery('#sidebar-report-tree-content').jstree( {
+			"core" : {
+				"animation" : 50,
+				"initially_open" : ["<%= @block.id %>"],
+			},
+    		"html_data" : {
+            	"ajax" : {
+                	"url" : "<%= url_for :controller => 'blocks', :action => 'tree' %>/<%= @block.id %>",
+               		"data" : function(n) {
+                		return { id : n.attr ? n.attr("id") : 0 };
+            		}
+     			}
+      		},
+			"themes" : {
+           		"theme" : "classic",
+           		"dots" : true,
+				"icons" : true,
+			},
+			"types" : {
+				"types" : {
+					"folder-bad" : {
+						"icon" : {
+							"image" : "/images/folder-bad.png"
+						}
+					},
+					"folder-good" : {
+						"icon" : {
+							"image" : "/images/folder-good.png"
+						}
+					},
+					"file-bad" : {
+						"icon" : {
+							"image" : "/images/file-bad.png"
+						}
+					},
+					"file-good" : {
+						"icon" : {
+							"image" : "/images/file-good.png"
+						}
+					},
+
+
+				},
+			},
+			"ui" : {
+				"select_limit" : 1,
+			},
+			"plugins" : [ "themes", "html_data", "ui", "types" ]
+		})
+		.bind("select_node.jstree", function(event, data) {
+			jQuery.get('/blocks/report_header/' + data.rslt.obj.attr('id'), function(page) {
+				jQuery('#detection-report-header').html(page);
+			});
+
+			jQuery.get('/blocks/report_body/' + data.rslt.obj.attr('id'), function(page) {
+				jQuery('#detection-report-body').html(page);
+			});
+		})
+		.bind("reopen.jstree", function(event, data) {
+			jQuery('#sidebar-report-tree').jstree("save_opened");
+			jQuery('#sidebar-report-tree').jstree("save_selected");
+			jQuery('#sidebar-report-tree').html(jQuery('#sidebar-report-tree-content').html());
+			jQuery('#sidebar-report-tree').jstree("reopen");
+		})
+	});
+
+	jQuery(function() {
+		jQuery('#sidebar-report-tree').jstree( {
+			"core" : {
+				"animation" : 50,
+			},
+    		"html_data" : {
+            	"data" : ""
+      		},
+			"themes" : {
+           		"theme" : "classic",
+           		"dots" : true,
+				"icons" : true,
+			},
+			"types" : {
+				"types" : {
+					"folder-bad" : {
+						"icon" : {
+							"image" : "/images/folder-bad.png"
+						}
+					},
+					"folder-good" : {
+						"icon" : {
+							"image" : "/images/folder-good.png"
+						}
+					},
+					"file-bad" : {
+						"icon" : {
+							"image" : "/images/file-bad.png"
+						}
+					},
+					"file-good" : {
+						"icon" : {
+							"image" : "/images/file-good.png"
+						}
+					},
+
+
+				},
+			},
+            "ui" : {
+                "select_limit" : 1,
+            },
+			"plugins" : [ "themes", "html_data", "ui", "types" ]
+		})
+		.bind("select_node.jstree", function(event, data) {
+		
+			if(current_id != data.rslt.obj.attr('id')) {
+				current_id = data.rslt.obj.attr('id');
+
+				jQuery.get('/blocks/report_header/' + data.rslt.obj.attr('id'), function(page) {
+					jQuery('#detection-report-header').html(page);
+				});
+
+				jQuery.get('/blocks/report_body/' + data.rslt.obj.attr('id'), function(page) {
+					jQuery('#detection-report-body').html(page);
+				});
+			}
+		})
+	});
+
+	update_tree();
+	setInterval('update_tree()', 5000);
+</script>

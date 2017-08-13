@@ -1,0 +1,49 @@
+The Yara nugget allows modified Yara rules to dictate which flags are set when they alert.  We do this by looking at the Metadata for responses.  The following metadata entries are used to set individual flags:
+
+rzb_dodgy		// Set the dodgy flag (note, the dodgy blocks are treated
+			// as good, they are marked as dodgy for analysis puroposes
+rzb_good		// Flag the data block as good
+rzb_bad			// Flag the data block as bad
+rzb_white_list		// Set the white list flag on the block
+rzb_black list		// Set the black list flag on the data block
+
+The following metadata entries are used to set the entire flag field.  Note:  The rzb_sfflags metadata entry will overwrite all flag settings.
+
+rzb_sfflags			// Set the sfflags fields to the provided integer
+rzb_entflags		// Set the enterprise fields to the provided integer
+
+The following rule fragment will set the data block as "dodgy".  With no other flags, and unless another nugget marks the data block as bad, the data block will be automatically marked as good as well by the system.
+
+rule ASPack
+{
+    meta:
+        rzb_dodgy       = true
+    strings:
+        $ = { 60 E8 ?? ?? ?? ?? 5D 81 ED ?? ?? (43 | 44) ?? B8 ?? ?? (43 | 44) ?? 03 C5 }
+etc...
+
+If you wanted, for some reason, to set the rule as dodgy, blacklist and bad and you wanted to set the third bit of the enterprise flags, you would do the following:
+
+rule ASPack
+{
+    meta:
+        rzb_sfflags     = 138
+		rzb_entflags	= 4
+    strings:
+        $ = { 60 E8 ?? ?? ?? ?? 5D 81 ED ?? ?? (43 | 44) ?? B8 ?? ?? (43 | 44) ?? 03 C5 }
+etc...
+
+As a reminder, the following are the flags definitions for sf_flags:
+
+#define SF_FLAG_GOOD 		0x00000001
+#define SF_FLAG_BAD 		0x00000002
+#define SF_FLAG_WHITE_LIST 	0x00000004
+#define SF_FLAG_BLACK_LIST 	0x00000008
+#define SF_FLAG_DIRTY 		0x00000010
+#define SF_FLAG_CANHAZ 		0x00000020
+#define SF_FLAG_PROCESSING 	0x00000040
+#define SF_FLAG_DODGY 		0x00000080
+#define SF_FLAG_SUSPICIOUS 	0x00000080
+#define SF_FLAG_ALL 		0xffffffff
+
+All of the packer rules we ship with Yara now set the data block as dodgy, rather than as bad.

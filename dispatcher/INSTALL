@@ -1,0 +1,158 @@
+DEPENDENCIES
+============
+To run Razorback you need the following additional server components:
+
+mysql
+activemq (Requires a JDK)
+memcached
+
+To compile the API and the dispatcher you need:
+libuuid
+libmagic
+libmemcached
+libssl
+libconfig
+libpcre
+libmysqlclient
+make
+libtool
+autoconf
+automake
+libcli
+
+Other dependencies, depending on the nuggets you choose include:
+json
+clamav
+wine
+fam & libfam
+jython
+
+For a full list, and the names of the needed packages under our supported
+platforms, please visit:
+
+https://sourceforge.net/apps/trac/razorbacktm/wiki/Manual/Installation/Dependencies
+
+MYSQL
+=====
+In dipatcher/share are two files, razorback.sql and razorback-with-data.sql.  The
+easiest way to get mysql setup is to cd into that directory and launch mysql.  Then:
+
+create database razorback;
+use razorback;
+source razorback.sql;
+source razorback-with-data.sql;
+
+ACTIVEMQ
+========
+ActiveMQ is the queue server and runs on Java.  You can download the queue server
+from http://activemq.apache.org/download.html.  As of the creation of this document
+we have tested at ActiveMQ 5.5.0.
+
+There are two modifications that need to be made.  The first is to edit the activemq.xml
+file in the conf directory.  In the transportConnectors property, the entry needs to look
+like the following:
+
+        <transportConnectors>
+            <transportConnector name="openwire" uri="tcp://0.0.0.0:61616"/>
+            <transportConnector name="stomp" uri="stomp://0.0.0.0:61612?transport.closeAsync=false"/>
+            <transportConnector name="stomp+nio" uri="stomp+nio://0.0.0.0:61613?transport.closeAsync=false"/>
+        </transportConnectors>
+
+Also, in some environments you need to force the activemq server to bind to the IPv4 stack.
+We do this by modifying the ACTIVEMQ_OPTS parameter in the bin/activemq file.  Initially it
+probably looks like this:
+
+ACTIVEMQ_OPTS_MEMORY="-Xms256M -Xmx256M"
+
+It should have the "-Djava.net.preferIPv4Stack=true" switch added to it:
+
+ACTIVEMQ_OPTS_MEMORY="-Xms256M -Xmx256M -Djava.net.preferIPv4Stack=true"
+
+Once this is done you can start the queue server with "bin/activemq start"
+
+MEMCACHED
+=========
+The default installation and options should work with the install.
+
+CONFIGURE
+=========
+To following configuration line will get you started (this will place
+the files in /razorback, change the --prefix and --with-api values as
+necessary:
+
+./configure --prefix=/razorback --enable-debug --disable-officeCat --disable-snort --disable-master-nugget-check \
+--with-api=/razorback/api --disable-fsMonitor --disable-virusTotal
+
+This will install the API, dispatcher and the following nuggets:
+
+Collector:
+fsWalk, fileInject
+
+Detection:
+logNuggget
+archiveInflate
+clamAV  (Make sure you've correctly installed the ClamAV library)
+
+CONF FILES
+=========
+So, in the etc/razorback directory are a number of sample conf directories.
+We do this so conf/make/make install doesn't wipe out your conf.  So first
+time through you need to copy each .sample file to just a .conf file:
+
+cp rzb.conf.sample rzb.conf
+
+Also, make sure you copy magic.sample to magic:
+
+cp magic.sample magic
+
+Once this is done, you need to configure certain parts of the system.
+
+dispatcher.conf
+---------------
+Enter the information for the database.  Also ensure the GlobalCache
+section is correct for your memcached server.  Finally, change the
+user/pass/enable combination for the console.  The storage parameters
+can be left at default for now.
+
+rzb.conf
+--------
+Modify the MessageQueue section to reflect your activemq settings.
+All other values can be left at default.
+
+file_log.conf
+-------------
+The LogFile value is where you want the log nugget to write out the
+log in <timestamp>,<datatype uuid>,<datatype>,<size> format.
+The DataBlockDir directory is where the captured files will be stored.
+
+THATS IT
+========
+You should now be able to launch the master nugget:
+
+bin/masterNugget -d
+
+and inject files into the system:
+
+bin/fileInject --file=testfile.pdf
+
+Check the output of the dispatcher and master nugget processes to make
+sure everything is going well.  The database should be populated with
+the datablock type, size, sha and status.
+
+SCRIPTNUGGET
+============
+After installing the script nugget you will need to install the language bindings for the scripting language you are using.
+
+For example, the ruby gem for the Razorback scripting nugget is in ./razorbacktm/bindings/ruby.  From that directory run 'gem build razorback.gemspec'.  This will build out the gem, allowing you to run 'sudo gem install scriptNugget-ruby-0.3.0.gem'.
+
+HELP!!
+======
+Hit us up on the mailing lists, info is at:
+https://sourceforge.net/projects/razorbacktm/support
+
+On IRC:
+irc.freenode.net
+#razorabck
+
+Or email the team at:
+vrt@sourcefire.com

@@ -1,0 +1,23 @@
+Source: librazorback
+Priority: extra
+Maintainer: Tom Judge <tjudge@sourcefire.com>
+Build-Depends: debhelper (>= 7.0.50~), autotools-dev, uuid-dev, libmagic-dev, libssl-dev, libconfig8-dev, libpcre3-dev, libmysqlclient-dev, libcurl4-openssl-dev, cdbs
+Standards-Version: 3.9.1
+Section: libs
+Homepage: http://razorbacktm.sourceforge.net/
+#Vcs-Git: git://git.debian.org/collab-maint/librazorback.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/librazorback.git;a=summary
+
+Package: librazorback-dev
+Section: libdevel
+Architecture: any
+Depends: librazorback1 (= ${binary:Version}), ${misc:Depends}
+Description: <insert up to 60 chars description>
+ <insert long description, indented with spaces>
+
+Package: librazorback1
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: <insert up to 60 chars description>
+ <insert long description, indented with spaces>

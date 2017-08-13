@@ -1,0 +1,723 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\api.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\binary_buffer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\block.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\block_id.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\block_pool.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\command_and_control.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\connected_entity.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\crypto.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\daemon.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\event.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\fantasia.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hash.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\init.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\inspector_queue.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\json_buffer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\judgment.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\list.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\local_cache.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\log.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\metadata.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ntvl.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nugget.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\queue.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\queue_list.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\response_queue.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\runtime_config.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\socket.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\string_list.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\submission.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\thread.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\thread_pool.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\uuids.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\transfer\core.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\messages\alert_child.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\messages\alert_primary.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\messages\block_submit.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\messages\cache_req.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\messages\cache_resp.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\messages\core.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\messages\inspection.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\messages\judgment.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\messages\log.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\messages\output_event.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\messages\output_log.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\transfer\file.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\transfer\ssh.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\messages\cnc\bye.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\messages\cnc\cache_clear.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\messages\cnc\config_ack.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\messages\cnc\config_update.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\messages\cnc\error.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\messages\cnc\go.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\messages\cnc\hello.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\messages\cnc\pause.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\messages\cnc\paused.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\messages\cnc\reg_req.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\messages\cnc\reg_resp.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\messages\cnc\rereg.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\messages\cnc\running.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\messages\cnc\term.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lock.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="win32\bobins.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="win32\uuid\clear.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="win32\uuid\compare.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="win32\uuid\copy.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="win32\uuid\isnull.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="win32\uuid\pack.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="win32\uuid\parse.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="win32\uuid\unpack.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="win32\uuid\unparse.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="win32\uuid\uuid_time.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="win32\json\arraylist.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="win32\json\debug.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="win32\json\json_object.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="win32\json\json_tokener.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="win32\json\json_util.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="win32\json\linkhash.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="win32\json\printbuf.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\timer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\agent.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\auth.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\auth1.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\base64.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\bind.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\buffer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\callbacks.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\channels.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\channels1.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\client.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\config.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\connect.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\dh.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\crc32.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\ecdh.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\error.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\getpass.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\kex1.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\init.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\kex.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\known_hosts.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\legacy.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\libcrypto.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\log.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\match.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\wrapper.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\messages.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\misc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\options.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\packet.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\packet1.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\packet_cb.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\packet_crypt.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\pcap.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\pki.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\pki_crypto.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\poll.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\scp.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\server.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\session.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\sftp.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\sftpserver.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\socket.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\string.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\threads.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libssh\src\gzip.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\config_file.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="win32\getopt.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="win32\getopt_long.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\inspection.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\api_internal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\binary_buffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\block_pool_private.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\command_and_control.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\connected_entity_private.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\fantasia.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\init.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\judgment_private.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\local_cache.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\runtime_config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\submission_private.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\api.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\block.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\block_id.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\block_pool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\cache.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\config_file.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\connected_entity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\daemon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\debug.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\event.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\hash.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\inspector_queue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\json_buffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\judgment.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\list.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\log.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\message_formats.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\messages.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\metadata.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\ntlv.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\nugget.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\queue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\queue_list.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\response_queue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\socket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\string_list.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\submission.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\thread.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\thread_pool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\uuids.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\visibility.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="win32\config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\transfer\core.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\messages\core.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\messages\cnc\core.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\lock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="win32\bobins.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="win32\uuid\uuid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="win32\safewindows.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="win32\uuid\uuidP.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="win32\uuid\uuidd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="win32\json\json-config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="win32\json\debug.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="win32\json\arraylist.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="win32\json\bits.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="win32\json\json.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="win32\json\printbuf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="win32\json\json_object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="win32\json\json_object_private.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="win32\json\json_tokener.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="win32\json\json_util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="win32\json\linkhash.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\razorback\timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\agent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\auth.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\bind.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\buffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\callbacks.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\channels.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\crc32.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\crypto.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\dh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\ecdh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\kex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\keys.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\legacy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\libcrypto.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\libgcrypt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\libssh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\libsshpp.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\messages.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\misc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\options.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\packet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\pcap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\pki.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\pki_priv.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\poll.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\priv.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\scp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\server.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\session.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\sftp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\socket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\ssh1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\ssh2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\string.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\threads.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libssh\include\libssh\wrapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="win32\getopt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\inspection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\..\..\..\zlib-Win32\lib\zdll.lib" />
+  </ItemGroup>
+</Project>

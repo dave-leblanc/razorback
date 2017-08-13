@@ -1,0 +1,156 @@
+#--------------------------------------------------
+#   VRT Rule Packages Snort.conf
+#
+#   For more information visit us at:
+#     http://www.snort.org                   Snort Website
+#     http://vrt-sourcefire.blogspot.com/    Sourcefire VRT Blog
+#
+#     Mailing list Contact:      snort-sigs@lists.sourceforge.net
+#     False Positive reports:    fp@sourcefire.com
+#     Snort bugs:                bugs@snort.org
+#
+#     Compatible with Snort Versions:
+#     VERSIONS : 2.9.1.0
+#
+#     Snort build options:
+#     OPTIONS : --enable-ipv6 --enable-gre --enable-mpls --enable-targetbased --enable-decoder-preprocessor-rules --enable-ppm --enable-perfprofiling --enable-zlib --enable-active-response --enable-normalizer --enable-reload --enable-react --enable-flexresp3
+#
+#     Additional information:
+#     This configuration file enables active response, to run snort in
+#     test mode -T you are required to supply an interface -i <interface>
+#     or test mode will fail to fully validate the configuration and
+#     exit with a FATAL error
+#--------------------------------------------------
+
+var RULE_PATH ../rules
+var SO_RULE_PATH ../so_rules
+var PREPROC_RULE_PATH ../preproc_rules
+
+# Stop generic decode events:
+config disable_decode_alerts
+
+# Stop Alerts on experimental TCP options
+config disable_tcpopt_experimental_alerts
+
+# Stop Alerts on obsolete TCP options
+config disable_tcpopt_obsolete_alerts
+
+# Stop Alerts on T/TCP alerts
+config disable_tcpopt_ttcp_alerts
+
+# Stop Alerts on all other TCPOption type events:
+config disable_tcpopt_alerts
+
+# Stop Alerts on invalid ip options
+config disable_ipopt_alerts
+
+# Configure IP / TCP checksum mode
+config checksum_mode: all
+
+# Configure specific UID and GID to run snort as after dropping privs. For more information see snort -h command line options
+#
+#config set_gid: razorback
+#config set_uid: razorback
+
+# Configure default snaplen. Snort defaults to MTU of in use interface. For more information see README
+#
+# config snaplen:
+#
+
+# Configure default bpf_file to use for filtering what traffic reaches snort. For more information see snort -h command line options (-F)
+#
+# config bpf_file:
+#
+
+# Configure default log directory for snort to log to.  For more information see snort -h command line options (-l)
+#
+# config logdir:
+
+
+###################################################
+# Configure the base detection engine.  For more information, see  README.decode
+###################################################
+
+# Configure PCRE match limitations
+config pcre_match_limit: 3500
+config pcre_match_limit_recursion: 1500
+
+# Configure the detection engine  See the Snort Manual, Configuring Snort - Includes - Config
+config detection: search-method lowmem search-optimize max-pattern-len 20
+
+# Configure the event queue.  For more information, see README.event_queue
+config event_queue: max_queue 1 log 1 order_events content_length
+
+###################################################
+# Configure dynamic loaded libraries.  
+# For more information, see Snort Manual, Configuring Snort - Dynamic Modules
+###################################################
+
+# path to dynamic preprocessor libraries
+dynamicpreprocessor directory /usr/local/lib/snort_dynamicpreprocessor/
+
+# path to base preprocessor engine
+dynamicengine /usr/local/lib/snort_dynamicengine/libsf_engine.so
+
+# path to dynamic rules libraries
+dynamicdetection directory /usr/local/lib/snort_dynamicrules
+
+###################################################
+# Configure preprocessors
+# For more information, see the Snort Manual, Configuring Snort - Preprocessors
+###################################################
+
+
+# Target-based IP defragmentation.  For more inforation, see README.frag3
+preprocessor frag3_global: max_frags 65536
+preprocessor frag3_engine: policy windows detect_anomalies overlap_limit 10 min_fragment_length 100 timeout 180
+
+# Target-Based stateful inspection/stream reassembly.  For more inforation, see README.stream5
+preprocessor stream5_global: track_tcp yes, \
+   track_udp yes, \
+   track_icmp no, \ 
+   max_tcp 262144, \
+   max_udp 131072
+preprocessor stream5_tcp: policy windows, detect_anomalies, require_3whs 180, \
+   overlap_limit 10, small_segments 3 bytes 150, timeout 180, \
+    ports client 21 22 23 25 42 53 79 109 110 111 113 119 135 136 137 139 143 \
+        161 445 513 514 587 593 691 1433 1521 2100 3306 6070 6665 6666 6667 6668 6669 \
+        7000 8181 32770 32771 32772 32773 32774 32775 32776 32777 32778 32779, \
+    ports both 80 81 311 443 465 563 591 593 636 901 989 992 993 994 995 1220 1414 1830 2301 2381 2809 3128 3702 5250 7907 7001 7802 7777 7779 \
+        7801 7900 7901 7902 7903 7904 7905 7906 7908 7909 7910 7911 7912 7913 7914 7915 7916 \
+        7917 7918 7919 7920 8000 8008 8028 8080 8088 8118 8123 8180 8243 8280 8888 9090 9091 9443 9999 11371
+preprocessor stream5_udp: timeout 180
+
+preprocessor rzb: \
+    nugget_id 4e7e65f9-e0e3-4329-9ec6-eb01c763440d \
+    http_enable \
+    http_ports { 80 81 311 591 593 901 1220 1414 1830 2301 2381 2809 3128 3702 5250 7001 7777 7779 8000 8008 8028 8080 8088 8118 8123 8180 8181 8243 8280 8888 9090 9091 9443 9999 11371 } \
+    smtp_enable \
+    smtp_ports { 25 465 587 691 } 
+
+###################################################
+# Step #6: Configure output plugins
+# For more information, see Snort Manual, Configuring Snort - Output Modules
+###################################################
+# syslog
+
+# Recommended for most installs
+# output alert_syslog: LOG_AUTH LOG_ALERT
+
+
+# unified2 
+# output unified2: filename merged.log, limit 128, nostamp, mpls_event_types, vlan_event_types
+
+# Additional configuration for specific types of installs
+# output alert_unified2: filename snort.alert, limit 128, nostamp
+# output log_unified2: filename snort.log, limit 128, nostamp 
+
+# pcap
+# output log_tcpdump: tcpdump.log
+
+# database
+# output database: alert, <db_type>, user=<username> password=<password> test dbname=<name> host=<hostname>
+# output database: log, <db_type>, user=<username> password=<password> test dbname=<name> host=<hostname>
+
+# prelude
+# output alert_prelude

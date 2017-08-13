@@ -1,0 +1,35 @@
+#  The "NuggetID" is a UUID that uniquely identifies this
+#  specific instance of the nugget.  Each running nugget
+#  must have a unique UUID.  The dispatcher will refuse
+#  connections from duplicate UUIDs or from UUIDS that are
+#  unregistered.
+#
+#  Register your new nuggetID using the script in dispatcher/scripts:
+#
+#  ./addNugget --uuid=4e7e65f9-e0e3-4329-9ec6-eb01c763440e --name="New Nugget" --location="some closet" --contact="sysadmin" --notes="Nothing to see here"
+#
+#
+NuggetId="13494958-cd46-4d48-94cc-952579ec86b3";
+Alert: {
+    Primary: {
+        Enabled="true";
+        Filter=">";
+        Command="/usr/bin/logger -t Razorback -p local3.alert";
+    };
+    Child: {
+        Enabled="true";
+        Filter=">";
+        Command="/usr/bin/logger -t Razorback -p local3.crit";
+    };
+};
+Log: {
+        Enabled="true";
+        Filter=">";
+        Command="/usr/bin/logger -t Razorback -p local3.notice";
+};
+
+Event: {
+        Enabled="true";
+        Filter=">";
+        Command="/usr/bin/logger -t Razorback -p local3.info";
+};

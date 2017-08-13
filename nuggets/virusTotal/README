@@ -1,0 +1,11 @@
+This nugget checks the virustotal api for the md5 of the submitted file.
+If the file is found, the short data of the alert will have all of the results
+from the json response.  Currently, this nugget does not submit the actual file.
+
+To install the nugget do the usual:
+
+./configure
+make
+make install
+
+Then copy the installed etc/razorback/rzb_virustotal.conf.sample to etc/razorback/rzb_virustotal.conf, and update the API_KEY to your key.

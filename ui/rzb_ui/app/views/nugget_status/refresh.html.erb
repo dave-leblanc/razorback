@@ -1,0 +1,5 @@
+<% if session[:nugget_status_sort] %>
+	<%= render :active_scaffold => "nugget_status", :params => { :sort => session[:nugget_status_sort], :sort_direction => session[:nugget_status_sort_direction] } %>
+<% else %>
+	<%= render :active_scaffold => "nugget_status" %>
+<% end %>

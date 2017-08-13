@@ -1,0 +1,5 @@
+librazorback (0.2.0-0ubuntu0+1-SNAPSHOT-2011-06-30-10-00-19-0400~lucid1) lucid; urgency=low
+
+  * Initial Release.
+
+ -- Tom Judge <tjudge@sourcefire.com>  Thu, 30 Jun 2011 07:15:48 -0400

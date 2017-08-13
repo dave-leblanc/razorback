@@ -1,0 +1,13 @@
+#  The "NuggetID" is a UUID that uniquely identifies this
+#  specific instance of the nugget.  Each running nugget
+#  must have a unique UUID.  The dispatcher will refuse
+#  connections from duplicate UUIDs or from UUIDS that are
+#  unregistered.
+#
+#  Register your new nuggetID using the script in dispatcher/scripts:
+#
+#  ./addNugget --uuid=4e7e65f9-e0e3-4329-9ec6-eb01c763440e --name="New Nugget" --location="some closet" --contact="sysadmin" --notes="Nothing to see here"
+#
+#
+NuggetId="5b0d7e61-7b18-487f-94b9-0fad4f22bd50";
+API_KEY="your-virus-total-api-key";

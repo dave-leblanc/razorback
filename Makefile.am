@@ -1,0 +1,4 @@
+SUBDIRS= @API@ 
+SUBDIRS += @DISPATCHER@
+SUBDIRS += @UI@
+SUBDIRS += nuggets

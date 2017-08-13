@@ -1,0 +1,96 @@
+
+PidFile="/var/run/razorback/dispatcher.pid";
+
+Dispatcher: {
+    Id="61f18be6-ad5a-42dd-807c-fe9681ba738d";
+    Priority = 100;
+};
+
+###
+### Backup dispatcher config
+###
+#
+#Dispatcher: {
+#    Id="e2bd940f-6c6d-4b26-b1cb-fc4f59422b23";
+#    Priority = 200;
+#};
+
+Threads: {
+    Cache: {
+        Initial=1;
+        Max=100;
+    };
+    Judgment:   {
+        Initial=5;
+        Max=100;
+    };
+    Log: {
+        Initial=1;
+        Max = 100;
+    };
+    Submission: {
+        Initial=1;
+        Max = 100;
+    };
+};
+
+Database: {
+    Host="localhost";
+    Port=3306;
+    Username="razorback";
+    Password="razorback";
+    Schema="razorback";
+};
+
+GlobalCache: (
+    {
+        Host="localhost";
+        Port=11211;
+    }
+);
+
+Console: {
+    Telnet: {
+        Enable=1;
+        Bind: {
+            Address="127.0.0.1";
+            Port=10001;
+        };
+    };
+    SSH: {
+        Enable=0;
+        Bind: {
+            Address="127.0.0.1";
+            Port=10002;
+        };
+    };
+    User="razorback";
+    Password="razorback";
+    EnablePassword="razorback";
+};
+
+Transfer: {
+    # 1 - SSH
+    # 2 - HTTP (Not complete)
+    Protocol=1;
+    # List of host names to advertise.
+    Hostnames: [ 
+        "127.0.0.1" 
+    ];
+    Port=9980;
+};
+
+Output: {
+    Alert: {
+        Enabled="false";
+    };
+    AlertChild: {
+        Enabled="false";
+    };    
+    Event: {
+        Enabled="false";
+    };    
+    InspectionEvent: {
+        Enabled="false";
+    };
+};

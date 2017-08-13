@@ -1,0 +1,1 @@
+<%= render :active_scaffold => 'metadatas', :conditions => ['Metadata_ID IN (?)', @alert.metadatas.map {|m| m.id}] %>

@@ -1,0 +1,12 @@
+
+The usual:
+
+./configure
+make && make install
+
+Will install this nugget.  Once installed you need to copy the provided
+rzb_yara.conf.sample to rzb_yara.conf.  Additionally you will need to 
+provide some more rules for yara.  These should be placed the directory
+specified in rzb_yara.conf.  The rules can be placed in subdirs or
+linked to if required as ftw is used to walk the rules directory.
+
